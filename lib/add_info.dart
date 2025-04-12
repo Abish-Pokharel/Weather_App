@@ -26,11 +26,11 @@ class _AddInformationState extends State<AddInformation> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Icon(widget.icon, size: 34),
-          Text(widget.label, style: TextStyle(fontSize: 18)),
+          Icon(widget.icon, size: 30),
+          Text(widget.label, style: TextStyle(fontSize: 16)),
           Text(
             widget.value,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ],
       ),

@@ -108,6 +108,7 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 5),
@@ -131,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         SizedBox(height: 20),
                         Container(
-                          height: 220,
+                          height: 200,
                           width: deviceWidth,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 56, 56, 56),
@@ -164,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           "Weather Forecast",
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -207,11 +208,11 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           "Additional Information",
                           style: TextStyle(
-                            fontSize: 26,
+                            fontSize: 22,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 15),
+                        SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
