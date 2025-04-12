@@ -10,6 +10,29 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  IconData getWeatherIcon(String condition) {
+    switch (condition.toLowerCase()) {
+      case "clear":
+        return Icons.wb_sunny;
+      case "clouds":
+        return Icons.cloud;
+      case "rain":
+        return Icons.water_drop;
+      case "drizzle":
+        return Icons.grain;
+      case "thunderstorm":
+        return Icons.flash_on;
+      case "snow":
+        return Icons.ac_unit;
+      case "mist":
+      case "fog":
+      case "haze":
+        return Icons.blur_on;
+      default:
+        return Icons.wb_cloudy;
+    }
+  }
+
   List<String> forecast = ["1", "2", "3", "4", "5"];
   List<String> addInfo = ["1", "2", "3"];
 
@@ -127,12 +150,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
 
-                              Icon(
-                                weatherMain == "Rain"
-                                    ? Icons.water_drop
-                                    : Icons.cloud,
-                                size: 82,
-                              ),
+                              Icon(getWeatherIcon(weatherMain), size: 82),
 
                               Text(
                                 weatherMain,
