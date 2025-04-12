@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_apk/add_info.dart';
+import 'package:weather_apk/weather_forecast.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,9 +33,6 @@ class _HomePageState extends State<HomePage> {
         return Icons.wb_cloudy;
     }
   }
-
-  List<String> forecast = ["1", "2", "3", "4", "5"];
-  List<String> addInfo = ["1", "2", "3"];
 
   final dio = Dio();
   String cityName = "Nepal";
@@ -85,7 +83,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Weather App",
+          "Weather",
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -104,7 +102,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body:
           isLoading
-              ? Center(child: CircularProgressIndicator())
+              ? Center(child: Center(child: CircularProgressIndicator()))
               : ListView(
                 children: [
                   Padding(
@@ -143,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Text(
-                                temperature,
+                                "${temperature}°F",
                                 style: TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
@@ -172,55 +170,37 @@ class _HomePageState extends State<HomePage> {
                         ),
                         SizedBox(height: 15),
                         SizedBox(
-                          height: 135,
-                          child: ListView.builder(
+                          height: 120,
+                          child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
-                            itemCount: forecast.length,
-                            itemBuilder: (context, index) {
-                              return Row(
-                                children: [
-                                  SizedBox(width: 10),
-                                  Container(
-                                    height: 120,
-                                    width: deviceWidth * 0.30,
-                                    decoration: BoxDecoration(
-                                      color: const Color.fromARGB(
-                                        255,
-                                        56,
-                                        56,
-                                        56,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Text(
-                                          "09:00",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
 
-                                        Icon(Icons.cloud, size: 40),
-
-                                        Text(
-                                          temperature.isEmpty
-                                              ? "Loading..."
-                                              : "$temperature°C",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
+                            child: Row(
+                              children: [
+                                WeatherForecast(
+                                  time: "09:00",
+                                  icon: Icons.sunny,
+                                  temperature: temperature,
+                                ),
+                                SizedBox(width: 15),
+                                WeatherForecast(
+                                  time: "12:00",
+                                  icon: Icons.cloud,
+                                  temperature: tempMax,
+                                ),
+                                SizedBox(width: 15),
+                                WeatherForecast(
+                                  time: "03:00",
+                                  icon: Icons.water_drop,
+                                  temperature: tempMin,
+                                ),
+                                SizedBox(width: 15),
+                                WeatherForecast(
+                                  time: "08:00",
+                                  icon: Icons.flash_on,
+                                  temperature: tempMax,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: 20),

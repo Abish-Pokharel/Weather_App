@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_apk/home_page.dart';
+import 'package:weather_apk/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(
         useMaterial3: true,
       ).copyWith(appBarTheme: AppBarTheme()),
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
